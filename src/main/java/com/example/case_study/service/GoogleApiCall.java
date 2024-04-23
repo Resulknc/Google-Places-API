@@ -14,7 +14,7 @@ import java.util.Locale;
 @Service
 public class GoogleApiCall {
     //TODO delete before publish/commit code
-    private final String API_KEY = "AIzaSyDE5Md_jmy3huo-Dy0RqbdEyiYe2vPq-2I";
+    private final String API_KEY = "API_KEY";
     private final String PLACES_API_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
 
     @Autowired
