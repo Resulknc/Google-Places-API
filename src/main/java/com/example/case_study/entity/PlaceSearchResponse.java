@@ -1,7 +1,6 @@
 package com.example.case_study.entity;
 
 
-import com.example.case_study.constant.PlacesSearchStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
