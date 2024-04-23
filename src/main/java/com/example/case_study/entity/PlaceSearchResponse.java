@@ -1,6 +1,7 @@
 package com.example.case_study.entity;
 
 
+import com.example.case_study.constant.PlacesSearchStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,9 +22,9 @@ public class PlaceSearchResponse {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
+    @OneToMany(mappedBy = "placeSearchResponseId")
+    private List<Place> results;
+
     @Column(name = "status")
     private String status;
-
-    @OneToMany(mappedBy = "id")
-    private List<Result> result;
 }

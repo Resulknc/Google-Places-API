@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,8 +14,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "result")
-public class Result {
+//@Table(name = "places")
+public class Place {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -26,8 +27,8 @@ public class Result {
     @Column(name = "vicinity")
     private String vicinity;
 
-    @OneToMany(mappedBy = "id")
-    private List<Type> type;
+    @Column(name = "types")
+    private ArrayList<String> types;
 
     @OneToOne
     @JoinColumn(name = "geometry_id", referencedColumnName = "id", nullable = false)
@@ -42,36 +43,25 @@ public class Result {
     @Column(name = "reference")
     private String reference;
 
-    @OneToOne
-    @JoinColumn(name = "opening_hours_id", referencedColumnName = "id", nullable = false)
-    private OpeningHours openingHours;
-
-    @OneToOne
-    @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false)
-    private Photo photo;
-
-    @Column(name = "price_level")
-    private int price_level;
-
-    @Column(name = "user_ratings_total")
-    private int userRatingsTotal;
-
     @Column(name = "place_id")
-    private String placeId;
+    private String place_id;
 
     @Column(name = "scope")
     private String scope;
 
-    @OneToOne
-    @JoinColumn(name = "plus_code_id", referencedColumnName = "id", nullable = false)
-    private PlusCode plusCode;
+    @Column(name = "business_status")
+    private String business_status;
 
     @Column(name = "icon_background_color")
-    private String iconBackgroundColor;
-
-    @Column(name = "business_status")
-    private String businessStatus;
+    private String icon_background_color;
 
     @Column(name = "icon_mask_base_uri")
-    private String iconMaskBaseUri;
+    private String icon_mask_base_uri;
+
+    @Column(name = "user_ratings_total")
+    private int user_ratings_total;
+
+    @ManyToOne
+    @JoinColumn(name = "place_search_response_id", referencedColumnName = "id", nullable = false)
+    private PlaceSearchResponse placeSearchResponseId;
 }

@@ -30,6 +30,6 @@ public class SearchParameter {
     private String radius;
 
     @OneToOne
-    @JoinColumn(name = "plac_search_response_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "place_search_response_id", referencedColumnName = "id", nullable = false)
     private PlaceSearchResponse placeSearchResponse;
 }

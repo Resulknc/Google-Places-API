@@ -1,14 +1,11 @@
 package com.example.case_study.controller;
 
-import com.example.case_study.dto.ApiCallDto;
+import com.example.case_study.dto.PlacesNearbySearchResponse;
 import com.example.case_study.service.GoogleApiCall;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Tag(name = "Rest APIs for GoogleApiCall Operations")
 @RestController
@@ -22,9 +19,9 @@ public class GoogleApiCallController {
         this.googleApiCall=googleApiCall;
     }
 
-    @PostMapping("/apicall")
-    public ResponseEntity<String> gettAllapicall(@RequestBody ApiCallDto apiCallDto) {
+    @GetMapping("/apicall")
+    public ResponseEntity<PlacesNearbySearchResponse> gettAllapicall(@RequestParam double longitude, @RequestParam double latitude, @RequestParam int radius) {
 
-        return ResponseEntity.ok(googleApiCall.searchNearbyPlaces(apiCallDto));
+        return ResponseEntity.ok(googleApiCall.searchNearbyPlaces(longitude,latitude,radius));
     }
 }
