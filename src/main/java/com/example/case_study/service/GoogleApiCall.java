@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 @Service
@@ -34,7 +35,7 @@ public class GoogleApiCall {
         this.modelMapper = modelMapper;
     }
 
-    public PlacesNearbySearchResponse searchNearbyPlaces(double longitude, double latitude, int radius) {
+    public ArrayList<Place> searchNearbyPlaces(double longitude, double latitude, int radius) {
 
         PlacesNearbySearchResponse placesNearbySearchResponse;
 //        PlaceSearchResponse placeSearchResponse;
@@ -71,7 +72,7 @@ public class GoogleApiCall {
             searchParameterRepository.save(searchParameter);
         }
 
-        return placesNearbySearchResponse;
+        return placesNearbySearchResponse.getResults();
 
     }
 
